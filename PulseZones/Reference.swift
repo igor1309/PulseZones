@@ -30,26 +30,27 @@ struct Reference : View {
                             Text("другой").tag(3)
                     }
 
-          /*          VStack(alignment: .leading) {
-                        Text("Пол")
-                        
-                        SegmentedControl(selection: $userData.gender) {
-                            Text("женский").tag(0)
-                            Text("мужской").tag(1)
-                            Text("бинарный").tag(2)
-                            Text("другой").tag(3)
-                        }
-                    }
-           */
+//                    VStack(alignment: .leading) {
+//                        Text("Пол")
+//                        
+//                        SegmentedControl(selection: $userData.gender) {
+//                            Text("женский").tag(0)
+//                            Text("мужской").tag(1)
+//                            Text("бинарный").tag(2)
+//                            Text("другой").tag(3)
+//                        }
+//                    }
                     
                     HStack {
                         Text("Возраст: \(Int(userData.age))")
                         
-                        Slider(value: $userData.age, from: 20.0, through: 100.0, by: 5.0)
+                        Slider(value: $userData.age, from: 15.0, through: 100.0, by: 5.0)
                     }
                     
                     Text("МЧСС = \(userData.maxPulse)*")
                         .font(.headline)
+                        .fontWeight(.black)
+                        .color(.green)
                 }
                 
                 if userData.showInReverseOrder {
@@ -63,12 +64,6 @@ struct Reference : View {
                         ReferenceBlock(zone: zone)
                         .environmentObject(self.userData)
                     }
-                }
-                
-                ForEach(userData.zones) { zone in
-                    // TODO:- вставить сортировку и в обратном порядке userData.showInReverseOrder
-                    ReferenceBlock(zone: zone)
-                        .environmentObject(self.userData)
                 }
                 
                 Section(header:
@@ -110,7 +105,7 @@ struct Reference_Previews : PreviewProvider {
         Reference()
 //        .environment(\.colorScheme, .dark)
             .environmentObject(UserData())
-            .environment(\.sizeCategory, .extraExtraExtraLarge)
+//            .environment(\.sizeCategory, .extraExtraExtraLarge)
 
     }
 }

@@ -19,36 +19,49 @@ final class UserData: BindableObject {
             Int(209 - (0.90 * age)))
     }
     
+    private let defaults = UserDefaults.standard
+    
     //  TODO: сохраняемый и загружаемый параметр
     //  TODO: идентифицировать пол числом — это плохо
-    var gender = 1 {
+    var gender = (UserDefaults.standard.integer(forKey: "gender")) {
         didSet {
             didChange.send(self)
+            defaults.set(gender, forKey: "gender")
         }
     }
 
     //  TODO: сохраняемый и загружаемый параметр
-    var age = 48.0 {
+    var age = (UserDefaults.standard.double(forKey: "age")) == 0 ? 40 : (UserDefaults.standard.double(forKey: "age")) {
         didSet {
             didChange.send(self)
+            defaults.set(age, forKey: "age")
         }
+        //let newDocNumber = UserDefaults.standard.integer(forKey: "age")
     }
     
-    var showInReverseOrder = false {
+    var showInReverseOrder: Bool = UserDefaults.standard.bool(forKey: "showInReverseOrder") {
         didSet {
             didChange.send(self)
+            defaults.set(showInReverseOrder, forKey: "showInReverseOrder")
         }
+//        set { defaults.set(newValue, forKey: "showInReverseOrder") }
+//        get { defaults.bool(forKey: "showInReverseOrder") }
+
     }
     
-    var terms = zoneTerms {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    var terms = zoneTerms
+//    {
+//        //  MARK:- а нужно ли? эти данные не меняются!
+//        didSet {
+//            didChange.send(self)
+//        }
+//    }
     
-    var zones = zoneData {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    var zones = zoneData
+//    {
+//        //  MARK:- а нужно ли? эти данные не меняются!
+//        didSet {
+//            didChange.send(self)
+//        }
+//    }
 }

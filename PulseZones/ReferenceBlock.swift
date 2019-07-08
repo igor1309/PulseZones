@@ -22,7 +22,7 @@ struct ReferenceBlock : View {
                 .padding(.vertical, 8)
         }
         ) {
-            Text("Интервал ЧСС: \(Int(Double(userData.maxPulse) * zone.min))" + " — " + "\(Int(Double(userData.maxPulse) * zone.max))")
+            Text("ЧСС: \(Int(Double(userData.maxPulse) * zone.min))" + " – " + "\(Int(Double(userData.maxPulse) * zone.max))")
             
             ExpandingText(text: zone.description)
         }
