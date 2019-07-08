@@ -20,6 +20,9 @@
 		2A8E365022D2767600053E92 /* Zones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E364F22D2767600053E92 /* Zones.swift */; };
 		2A8E365222D2784C00053E92 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E365122D2784C00053E92 /* Data.swift */; };
 		2A8E365422D2972900053E92 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E365322D2972900053E92 /* UserData.swift */; };
+		2AF3F4B022D310250073D001 /* ExpandingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF3F4AF22D310250073D001 /* ExpandingText.swift */; };
+		2AF3F4B222D332990073D001 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF3F4B122D332990073D001 /* Terms.swift */; };
+		2AF3F4F122D34F240073D001 /* ZoneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF3F4F022D34F240073D001 /* ZoneList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,10 @@
 		2A8E364F22D2767600053E92 /* Zones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zones.swift; sourceTree = "<group>"; };
 		2A8E365122D2784C00053E92 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		2A8E365322D2972900053E92 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2AF3F4AF22D310250073D001 /* ExpandingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingText.swift; sourceTree = "<group>"; };
+		2AF3F4B122D332990073D001 /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
+		2AF3F4B322D3385E0073D001 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2AF3F4F022D34F240073D001 /* ZoneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +116,15 @@
 		2A45825622D247540025B7E2 /* PulseZones */ = {
 			isa = PBXGroup;
 			children = (
+				2AF3F4B322D3385E0073D001 /* MyPlayground.playground */,
 				2A45825722D247540025B7E2 /* AppDelegate.swift */,
 				2A45825922D247540025B7E2 /* SceneDelegate.swift */,
 				2A45825B22D247540025B7E2 /* ContentView.swift */,
+				2AF3F4F022D34F240073D001 /* ZoneList.swift */,
 				2A45828722D2476E0025B7E2 /* Reference.swift */,
 				2A8E364D22D2754C00053E92 /* ReferenceBlock.swift */,
+				2AF3F4AF22D310250073D001 /* ExpandingText.swift */,
+				2AF3F4B122D332990073D001 /* Terms.swift */,
 				2A8E364F22D2767600053E92 /* Zones.swift */,
 				2A8E365122D2784C00053E92 /* Data.swift */,
 				2A8E365322D2972900053E92 /* UserData.swift */,
@@ -285,7 +296,10 @@
 				2A8E365222D2784C00053E92 /* Data.swift in Sources */,
 				2A45825822D247540025B7E2 /* AppDelegate.swift in Sources */,
 				2A8E365422D2972900053E92 /* UserData.swift in Sources */,
+				2AF3F4F122D34F240073D001 /* ZoneList.swift in Sources */,
+				2AF3F4B022D310250073D001 /* ExpandingText.swift in Sources */,
 				2A8E364E22D2754C00053E92 /* ReferenceBlock.swift in Sources */,
+				2AF3F4B222D332990073D001 /* Terms.swift in Sources */,
 				2A45828822D2476E0025B7E2 /* Reference.swift in Sources */,
 				2A8E365022D2767600053E92 /* Zones.swift in Sources */,
 				2A45825A22D247540025B7E2 /* SceneDelegate.swift in Sources */,

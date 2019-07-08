@@ -12,59 +12,70 @@ import SwiftUI
 
 struct Reference : View {
     @EnvironmentObject private var userData: UserData
-
-    @State private var maxPulse = 180.0
-    @State private var genderSelector = 1
-    @State private var age = 45.0
     
     var body: some View {
-        NavigationView {
+        //  loop through dictionary with ForEach
+        //  https://www.oipapio.com/question-4575439
+        let keys = userData.terms.map{$0.key}
+        let values = userData.terms.map {$0.value}
+        
+        return NavigationView {
             List {
-                Picker(selection: $genderSelector,
-                       label: Text("Пол")) {
-                        Text("женский").tag(0)
-                        Text("мужской").tag(1)
-                        Text("бинарный").tag(2)
-                        Text("другой").tag(3)
-                        
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Пол")
-                    
-                    SegmentedControl(selection: $genderSelector) {
+                Group {
+                    Picker(selection: $userData.gender,
+                    label: Text("Пол")) {
                         Text("женский").tag(0)
                         Text("мужской").tag(1)
                         Text("бинарный").tag(2)
                         Text("другой").tag(3)
                     }
-                }
-                
-                HStack {
-                    Text("Возраст: \(Int(age))")
+
+                    VStack(alignment: .leading) {
+                        Text("Пол")
+                        
+                        SegmentedControl(selection: $userData.gender) {
+                            Text("женский").tag(0)
+                            Text("мужской").tag(1)
+                            Text("бинарный").tag(2)
+                            Text("другой").tag(3)
+                        }
+                    }
                     
-                    Slider(value: $age, from: 20.0, through: 100.0, by: 5.0)
+                    HStack {
+                        Text("Возраст: \(Int(userData.age))")
+                        
+                        Slider(value: $userData.age, from: 20.0, through: 100.0, by: 5.0)
+                    }
+                    
+                    Text("МЧСС* = \(userData.maxPulse)")
                 }
                 
-                //TODO:- доделать вычисления
-                Text("МЧСС* = ") + Text(" ДОДЕЛАТЬ!!!".uppercased()).color(.red).bold().font(.title)
                 
                 ForEach(userData.zones) { zone in
                     // TODO:- вставить сортировку и в обратном порядке userData.showInReverseOrder
                     ReferenceBlock(zone: zone)
+                        .environmentObject(self.userData)
                 }
                 
-                VStack(alignment: .leading) {
-                    Text("Примечания".uppercased())
-                        .color(.secondary)
-                        .padding(.bottom, 0)
-                
-                    Text("МЧСС – это наибольшее количество сокращений сердца в минуту, которое достигается на пределе возможностей организма во время интенсивной тренировки. Это самое большое количество ударов в минуту, которое ваше сердце способно совершать при максимальной нагрузке.")
-                        .color(.secondary)
-                        .font(.footnote)
-                        .italic()
-                        .lineLimit(nil)
+                Section(header: Text("Примечания".uppercased()))
+                {
+                    EmptyView()
                 }
+                
+                Text("Примечания".uppercased())
+                    .color(.secondary)
+                
+                //                ZoneList()
+                ForEach(keys.indices) {index in
+                    Terms(term: keys[index], definition: values[index])
+                }
+
+                
+//                ForEach(userData.terms) { term in
+//                    Terms(term: term.key,
+//                          definition: term.value)
+//                        .environmentObject(self.userData)
+//                }
             }
 
             .navigationBarTitle(Text(verbatim: "Пульсовые зоны"))
@@ -76,7 +87,9 @@ struct Reference : View {
                     ) {
                         Text("show in reverse order".uppercased())
                             .font(.caption)
-                            .color(.secondary)
+                            .fontWeight(.light)
+                            .color(.green)
+//                            .color(.secondary)
                     }
             )
             
