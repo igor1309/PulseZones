@@ -15,10 +15,11 @@ struct Terms : View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(term)
-                .bold()
+//                .bold()
+                .fontWeight(.heavy)
                 .color(.secondary)
-                .font(.footnote)
-                .italic()
+                .font(.subheadline)
+//                .italic()
             
             Text(definition)
                 .color(.secondary)

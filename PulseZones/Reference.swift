@@ -23,14 +23,14 @@ struct Reference : View {
             List {
                 Group {
                     Picker(selection: $userData.gender,
-                    label: Text("Пол")) {
-                        Text("женский").tag(0)
-                        Text("мужской").tag(1)
-                        Text("бинарный").tag(2)
-                        Text("другой").tag(3)
+                        label: Text("Пол")) {
+                            Text("женский").tag(0)
+                            Text("мужской").tag(1)
+                            Text("бинарный").tag(2)
+                            Text("другой").tag(3)
                     }
 
-                    VStack(alignment: .leading) {
+          /*          VStack(alignment: .leading) {
                         Text("Пол")
                         
                         SegmentedControl(selection: $userData.gender) {
@@ -40,6 +40,7 @@ struct Reference : View {
                             Text("другой").tag(3)
                         }
                     }
+           */
                     
                     HStack {
                         Text("Возраст: \(Int(userData.age))")
@@ -47,9 +48,22 @@ struct Reference : View {
                         Slider(value: $userData.age, from: 20.0, through: 100.0, by: 5.0)
                     }
                     
-                    Text("МЧСС* = \(userData.maxPulse)")
+                    Text("МЧСС = \(userData.maxPulse)*")
+                        .font(.headline)
                 }
                 
+                if userData.showInReverseOrder {
+                    ForEach(userData.zones.reversed()) { zone in
+                        ReferenceBlock(zone: zone)
+                            .environmentObject(self.userData)
+                    }
+                }
+                else {
+                    ForEach(userData.zones) { zone in
+                        ReferenceBlock(zone: zone)
+                        .environmentObject(self.userData)
+                    }
+                }
                 
                 ForEach(userData.zones) { zone in
                     // TODO:- вставить сортировку и в обратном порядке userData.showInReverseOrder
@@ -57,25 +71,19 @@ struct Reference : View {
                         .environmentObject(self.userData)
                 }
                 
-                Section(header: Text("Примечания".uppercased()))
+                Section(header:
+                    HStack {
+                        Image(systemName: "text.justify")
+                            .foregroundColor(.secondary)
+                        Text("Примечания".uppercased())
+                            .padding(.vertical, 8)
+                    })
                 {
-                    EmptyView()
+                    //                ZoneList()
+                    ForEach(keys.indices) {index in
+                        Terms(term: keys[index], definition: values[index])
+                    }
                 }
-                
-                Text("Примечания".uppercased())
-                    .color(.secondary)
-                
-                //                ZoneList()
-                ForEach(keys.indices) {index in
-                    Terms(term: keys[index], definition: values[index])
-                }
-
-                
-//                ForEach(userData.terms) { term in
-//                    Terms(term: term.key,
-//                          definition: term.value)
-//                        .environmentObject(self.userData)
-//                }
             }
 
             .navigationBarTitle(Text(verbatim: "Пульсовые зоны"))
@@ -85,11 +93,10 @@ struct Reference : View {
                 Toggle(isOn: $userData.showInReverseOrder
                     .animation()
                     ) {
-                        Text("show in reverse order".uppercased())
+                        Text("обратный порядок".uppercased())
                             .font(.caption)
                             .fontWeight(.light)
                             .color(.green)
-//                            .color(.secondary)
                     }
             )
             
@@ -103,6 +110,7 @@ struct Reference_Previews : PreviewProvider {
         Reference()
 //        .environment(\.colorScheme, .dark)
             .environmentObject(UserData())
+            .environment(\.sizeCategory, .extraExtraExtraLarge)
 
     }
 }
