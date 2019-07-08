@@ -15,13 +15,12 @@ final class UserData: BindableObject {
     //  Обобщенная формула подсчета МЧСС: 220 минус ваш возраст. Более современная формула: 214-(0.8 x возраст) для мужчин и 209-(0.9 x возраст) для женщин. Но более информативным будет получить значение в лабораторных условиях.
     var maxPulse: Int {
         return Int(( gender == 1) ?
-            Int(214 - (0.8 * age)) :
+            Int(214 - (0.80 * age)) :
             Int(209 - (0.90 * age)))
     }
     
     private let defaults = UserDefaults.standard
     
-    //  TODO: сохраняемый и загружаемый параметр
     //  TODO: идентифицировать пол числом — это плохо
     var gender = (UserDefaults.standard.integer(forKey: "gender")) {
         didSet {
@@ -44,24 +43,9 @@ final class UserData: BindableObject {
             didChange.send(self)
             defaults.set(showInReverseOrder, forKey: "showInReverseOrder")
         }
-//        set { defaults.set(newValue, forKey: "showInReverseOrder") }
-//        get { defaults.bool(forKey: "showInReverseOrder") }
-
     }
     
     var terms = zoneTerms
-//    {
-//        //  MARK:- а нужно ли? эти данные не меняются!
-//        didSet {
-//            didChange.send(self)
-//        }
-//    }
     
     var zones = zoneData
-//    {
-//        //  MARK:- а нужно ли? эти данные не меняются!
-//        didSet {
-//            didChange.send(self)
-//        }
-//    }
 }
