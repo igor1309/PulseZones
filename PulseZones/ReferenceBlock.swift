@@ -32,8 +32,7 @@ struct ReferenceBlock : View {
             Text("ЧСС: \(Int(Double(userData.maxPulse) * zone.min))" + " – " + "\(Int(Double(userData.maxPulse) * zone.max))")
                 .font(.callout)
             
-            ExpandingText(text: zone.description)
-//                .font(.headline)
+            ExpandingText(text: zone.description, showExpandCollapseButtons: false)
         }
     }
 }
