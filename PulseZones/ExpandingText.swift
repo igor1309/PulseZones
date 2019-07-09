@@ -32,6 +32,7 @@ struct ExpandingText : View {
                     .font(.footnote)
                     .italic()
                     .lineLimit(showFullDescription ? nil : 3)
+                    .animation(.basic())
                 
                 if showExpandCollapseButtons {
                     Text(showFullDescription ? "⌃" : "more")
