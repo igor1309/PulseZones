@@ -10,24 +10,24 @@ import SwiftUI
 
 struct ExpandingText : View {
     var text: String
+    
     @State private var showFullDescription = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(text)
-                .color(.secondary)
-                .font(.footnote)
-                .italic()
-                .lineLimit(showFullDescription ? nil : 3)
-            
-            Button(action: {
-                self.showFullDescription.toggle()
-            }) {
+        Button(action: {
+            self.showFullDescription.toggle()
+        }) {
+            VStack(alignment: .leading) {
+                Text(text)
+                    .color(.secondary)
+                    .font(.footnote)
+                    .italic()
+                    .lineLimit(showFullDescription ? nil : 3)
+                
                 Text(showFullDescription ? "⌃" : "more")
                     .color(.accentColor)
                     .font(.footnote)
             }
-            //                    .tapAction { self.showFullDescription.toggle() }
         }
     }
 }

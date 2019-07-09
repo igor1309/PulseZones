@@ -33,6 +33,7 @@ struct ReferenceBlock : View {
                 .font(.callout)
             
             ExpandingText(text: zone.description)
+//                .font(.headline)
         }
     }
 }
