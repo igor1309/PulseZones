@@ -26,7 +26,7 @@ struct ReferenceBlock : View {
                 //  .color(.environment.colorScheme == .dark ? zone.color : Color(.gray))
                 //  только правильно(!!) и вместо Color(.gray) цвет по умолчанию (как его доставать? это .primary?)
                 //  в темном варианте цвета хэдеров секций выглядят норм
-                .padding(.vertical, 8)
+//                .padding(.vertical, 8)
         }
         ) {
             Text("ЧСС: \(Int(Double(userData.maxPulse) * zone.min))" + " – " + "\(Int(Double(userData.maxPulse) * zone.max))")

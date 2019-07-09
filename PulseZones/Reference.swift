@@ -20,7 +20,7 @@ struct Reference : View {
         let values = userData.terms.map {$0.value}
         
         return NavigationView {
-            List {
+            Form {
                 Group {
                     Picker(selection: $userData.gender,
                         label: Text("Пол")) {
@@ -71,7 +71,7 @@ struct Reference : View {
                         Image(systemName: "text.justify")
                             .foregroundColor(.secondary)
                         Text("Примечания".uppercased())
-                            .padding(.vertical, 8)
+//                            .padding(.vertical, 8)
                     })
                 {
                     //                ZoneList()
@@ -103,8 +103,8 @@ struct Reference : View {
 struct Reference_Previews : PreviewProvider {
     static var previews: some View {
         Reference()
-        .environment(\.colorScheme, .dark)
             .environmentObject(UserData())
+            .environment(\.colorScheme, .dark)
             .environment(\.sizeCategory, .extraLarge)
 
     }
