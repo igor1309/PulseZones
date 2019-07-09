@@ -88,7 +88,7 @@ struct Reference : View {
                 Toggle(isOn: $userData.showInReverseOrder
                     .animation()
                     ) {
-                        Text("обратный порядок".uppercased())
+                        Text("обратный порядок".uppercased())   //  обратный порядок
                             .font(.caption)
                             .fontWeight(.light)
                             .color(.green)
@@ -103,9 +103,9 @@ struct Reference : View {
 struct Reference_Previews : PreviewProvider {
     static var previews: some View {
         Reference()
-//        .environment(\.colorScheme, .dark)
+        .environment(\.colorScheme, .dark)
             .environmentObject(UserData())
-//            .environment(\.sizeCategory, .extraExtraExtraLarge)
+            .environment(\.sizeCategory, .extraLarge)
 
     }
 }
