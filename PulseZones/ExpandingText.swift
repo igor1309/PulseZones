@@ -12,16 +12,16 @@ struct ExpandingText : View {
     var text: String
     var showExpandCollapseButtons: Bool
     
-    @State private var showModal = false
+//    @State private var showModal = false
     @State private var showFullDescription = false
     
     var body: some View {
-        let modal = Modal(
-            Text(text)
-                .lineLimit(nil)
-                .padding()
-                .padding(),
-            onDismiss: { self.showModal = false })
+//        let modal = Modal(
+//            Text(text)
+//                .lineLimit(nil)
+//                .padding()
+//                .padding(),
+//            onDismiss: { self.showModal = false })
         
         return Button(action: {
             self.showFullDescription.toggle()
@@ -40,21 +40,21 @@ struct ExpandingText : View {
                 }
             }
         }
-            .presentation(showModal ? modal : nil)
-            .gesture(
-                LongPressGesture(minimumDuration: 3,
-                                 maximumDistance: 0)
-                    .onEnded { _ in
-                        if !self.showFullDescription {
-                            self.showModal.toggle()
-                        }
-                    }
-                    .onChanged { _ in
-                        if !self.showFullDescription {
-                            self.showModal.toggle()
-                        }
-                    }
-            )
+//            .presentation(showModal ? modal : nil)
+//            .gesture(
+//                LongPressGesture(minimumDuration: 3,
+//                                 maximumDistance: 0)
+//                    .onEnded { _ in
+//                        if !self.showFullDescription {
+//                            self.showModal.toggle()
+//                        }
+//                    }
+//                    .onChanged { _ in
+//                        if !self.showFullDescription {
+//                            self.showModal.toggle()
+//                        }
+//                    }
+//            )
     }
 }
 
