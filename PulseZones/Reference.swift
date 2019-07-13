@@ -22,6 +22,7 @@ struct Reference : View {
         return NavigationView {
             Form {
                 Group {
+                    // TODO:- изменить по образцу SegmentedControlAndPicker.swift
                     Picker(selection: $userData.gender,
                         label: Text("Пол")) {
                             Text("женский").tag(0)
@@ -85,14 +86,14 @@ struct Reference : View {
         
             .navigationBarItems(
                 trailing:
-                Toggle(isOn: $userData.showInReverseOrder
-                    .animation()
-                    ) {
-                        Text("обратный порядок".uppercased())   //  обратный порядок
-                            .font(.caption)
-                            .fontWeight(.light)
-                            .color(.green)
-                    }
+                    Toggle(isOn: $userData.showInReverseOrder
+                        .animation()
+                        ) {
+                            Text("обратный порядок".uppercased())   //  обратный порядок
+                                .font(.caption)
+                                .fontWeight(.light)
+                                .color(.green)
+                        }
             )
             
         }
