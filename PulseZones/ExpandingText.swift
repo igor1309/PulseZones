@@ -12,57 +12,42 @@ struct ExpandingText : View {
     var text: String
     var showExpandCollapseButtons: Bool
     
-//    @State private var showModal = false
+    //    @State private var showModal = false
     @State private var showFullDescription = false
     
     var body: some View {
-//        let modal = Modal(
-//            Text(text)
-//                .lineLimit(nil)
-//                .padding()
-//                .padding(),
-//            onDismiss: { self.showModal = false })
-        
-        return Button(action: {
+        Button(action: {
             self.showFullDescription.toggle()
         }) {
             VStack(alignment: .leading) {
                 Text(text)
-                    .color(.secondary)
+                    .foregroundColor(.secondary)
                     .font(.footnote)
                     .italic()
                     .lineLimit(showFullDescription ? nil : 3)
-                    .animation(.basic())
+                    .animation(.easeInOut)
                 
                 if showExpandCollapseButtons {
                     Text(showFullDescription ? "⌃" : "more")
-                        .color(.accentColor)
+                        .foregroundColor(.accentColor)
                         .font(.footnote)
                 }
             }
         }
-//            .presentation(showModal ? modal : nil)
-//            .gesture(
-//                LongPressGesture(minimumDuration: 3,
-//                                 maximumDistance: 0)
-//                    .onEnded { _ in
-//                        if !self.showFullDescription {
-//                            self.showModal.toggle()
-//                        }
-//                    }
-//                    .onChanged { _ in
-//                        if !self.showFullDescription {
-//                            self.showModal.toggle()
-//                        }
-//                    }
-//            )
     }
 }
 
 #if DEBUG
 struct ExpandingText_Previews : PreviewProvider {
     static var previews: some View {
-        ExpandingText(text: "60-70% от МЧСС. Норма при ЧСС 120-135 уд/мин. Тренировки в этой зоне способствуют повышению общей выносливости. Как показывают исследования, при тренировке в этой зоне вы обеспечиваете мобилизацию жиров и транспорт жиров в мышцы. Повышается качество мышечных волокон и плотность капилляров. Тренировка во второй зоне является неотъемлемой частью программы занятий каждого бегуна. При тренировке в этой зоне также сжигается 85% жиров, 10% углеводов и 5% белков. Увеличивается общее количество сожженных калорий по сравнению с предыдущей зоной. Улучшение состояния сердечно-сосудистой и дыхательной системы.", showExpandCollapseButtons: true)
+        Group {
+            ExpandingText(text: "60-70% от МЧСС. Норма при ЧСС 120-135 уд/мин. Тренировки в этой зоне способствуют повышению общей выносливости. Как показывают исследования, при тренировке в этой зоне вы обеспечиваете мобилизацию жиров и транспорт жиров в мышцы. Повышается качество мышечных волокон и плотность капилляров. Тренировка во второй зоне является неотъемлемой частью программы занятий каждого бегуна. При тренировке в этой зоне также сжигается 85% жиров, 10% углеводов и 5% белков. Увеличивается общее количество сожженных калорий по сравнению с предыдущей зоной. Улучшение состояния сердечно-сосудистой и дыхательной системы.", showExpandCollapseButtons: true)
+            
+            ExpandingText(text: "60-70% от МЧСС. Норма при ЧСС 120-135 уд/мин. Тренировки в этой зоне способствуют повышению общей выносливости. Как показывают исследования, при тренировке в этой зоне вы обеспечиваете мобилизацию жиров и транспорт жиров в мышцы. Повышается качество мышечных волокон и плотность капилляров. Тренировка во второй зоне является неотъемлемой частью программы занятий каждого бегуна. При тренировке в этой зоне также сжигается 85% жиров, 10% углеводов и 5% белков. Увеличивается общее количество сожженных калорий по сравнению с предыдущей зоной. Улучшение состояния сердечно-сосудистой и дыхательной системы.", showExpandCollapseButtons: false)
+                .preferredColorScheme(.dark)
+                .environment(\.sizeCategory, .extraLarge)
+            
+        }
         .previewLayout(.sizeThatFits)
     }
 }

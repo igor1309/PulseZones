@@ -24,24 +24,12 @@ struct Reference : View {
                 Group {
                     // TODO:- изменить по образцу SegmentedControlAndPicker.swift
                     Picker(selection: $userData.gender,
-                        label: Text("Пол")) {
+                           label: Text("Пол")) {
                             Text("женский").tag(0)
                             Text("мужской").tag(1)
                             Text("бинарный").tag(2)
                             Text("другой").tag(3)
                     }
-
-//                    VStack(alignment: .leading) {
-//                        Text("Пол")
-//                        
-//                        SegmentedControl(selection: $userData.gender) {
-//                            Text("женский").tag(0)
-//                            Text("мужской").tag(1)
-//                            Text("бинарный").tag(2)
-//                            Text("другой").tag(3)
-//                        }
-//                    }
-                    
                     HStack {
                         Text("Возраст: \(Int(userData.age))")
                         
@@ -51,7 +39,7 @@ struct Reference : View {
                     Text("МЧСС = \(userData.maxPulse)*")
                         .font(.headline)
                         .fontWeight(.black)
-                        .color(.green)
+                        .foregroundColor(.green)
                 }
                 
                 if userData.showInReverseOrder {
@@ -63,7 +51,7 @@ struct Reference : View {
                 else {
                     ForEach(userData.zones) { zone in
                         ReferenceBlock(zone: zone)
-                        .environmentObject(self.userData)
+                            .environmentObject(self.userData)
                     }
                 }
                 
@@ -72,7 +60,7 @@ struct Reference : View {
                         Image(systemName: "text.justify")
                             .foregroundColor(.secondary)
                         Text("Примечания".uppercased())
-//                            .padding(.vertical, 8)
+                        //                            .padding(.vertical, 8)
                     })
                 {
                     //                ZoneList()
@@ -81,19 +69,19 @@ struct Reference : View {
                     }
                 }
             }
-
-            .navigationBarTitle(Text(verbatim: "Пульсовые зоны"))
-        
-            .navigationBarItems(
-                trailing:
+                
+                .navigationBarTitle(Text(verbatim: "Пульсовые зоны"))
+                
+                .navigationBarItems(
+                    trailing:
                     Toggle(isOn: $userData.showInReverseOrder
                         .animation()
-                        ) {
-                            Text("обратный порядок".uppercased())   //  обратный порядок
-                                .font(.caption)
-                                .fontWeight(.light)
-                                .color(.green)
-                        }
+                    ) {
+                        Text("обратный порядок".uppercased())   //  обратный порядок
+                            .font(.caption)
+                            .fontWeight(.light)
+                            .foregroundColor(.green)
+                    }
             )
             
         }
@@ -107,7 +95,7 @@ struct Reference_Previews : PreviewProvider {
             .environmentObject(UserData())
             .environment(\.colorScheme, .dark)
             .environment(\.sizeCategory, .extraLarge)
-
+        
     }
 }
 #endif

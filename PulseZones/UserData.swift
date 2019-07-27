@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 final class UserData: BindableObject {
-    let didChange = PassthroughSubject<UserData, Never>()
+    let willChange = PassthroughSubject<UserData, Never>()
     
     //  Обобщенная формула подсчета МЧСС: 220 минус ваш возраст. Более современная формула: 214-(0.8 x возраст) для мужчин и 209-(0.9 x возраст) для женщин. Но более информативным будет получить значение в лабораторных условиях.
     var maxPulse: Int {
@@ -24,7 +24,7 @@ final class UserData: BindableObject {
     //  TODO: идентифицировать пол числом — это плохо
     var gender = (UserDefaults.standard.integer(forKey: "gender")) {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
             defaults.set(gender, forKey: "gender")
         }
     }
@@ -32,7 +32,7 @@ final class UserData: BindableObject {
     //  TODO: сохраняемый и загружаемый параметр
     var age = (UserDefaults.standard.double(forKey: "age")) == 0 ? 40 : (UserDefaults.standard.double(forKey: "age")) {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
             defaults.set(age, forKey: "age")
         }
         //let newDocNumber = UserDefaults.standard.integer(forKey: "age")
@@ -40,7 +40,7 @@ final class UserData: BindableObject {
     
     var showInReverseOrder: Bool = UserDefaults.standard.bool(forKey: "showInReverseOrder") {
         didSet {
-            didChange.send(self)
+            willChange.send(self)
             defaults.set(showInReverseOrder, forKey: "showInReverseOrder")
         }
     }

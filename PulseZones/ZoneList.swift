@@ -13,21 +13,13 @@ struct ZoneList : View {
 
     var body: some View {
         
-        let keys = userData.terms.map{$0.key}
-        let values = userData.terms.map {$0.value}
+        let keys = userData.terms.map { $0.key }
+        let values = userData.terms.map { $0.value }
         
         return List {
             ForEach(keys.indices) {index in
                 Terms(term: keys[index], definition: values[index])
             }
-        
-        
-        
-//        List {
-//            ForEach(userData.terms.map{$0.key}.indices) { term in
-//                Text(term.key)
-////                    + Text(term.value)
-//            }
         }
     }
 }
