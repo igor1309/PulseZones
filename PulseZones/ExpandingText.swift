@@ -50,7 +50,7 @@ struct ExpandingText_Previews : PreviewProvider {
                 .environment(\.sizeCategory, .extraLarge)
             
         }
-        .previewLayout(.sizeThatFits)
+//        .previewLayout(.sizeThatFits)
     }
 }
 #endif

@@ -6,11 +6,10 @@
 //  Copyright © 2019 Igor Malyarov. All rights reserved.
 //
 
-import Combine
 import Foundation
 
 final class UserData: ObservableObject {
-    let willChange = PassthroughSubject<UserData, Never>()
+//    let willChange = PassthroughSubject<UserData, Never>()
     
     //  Обобщенная формула подсчета МЧСС: 220 минус ваш возраст. Более современная формула: 214-(0.8 x возраст) для мужчин и 209-(0.9 x возраст) для женщин. Но более информативным будет получить значение в лабораторных условиях.
     var maxPulse: Int {
@@ -21,10 +20,10 @@ final class UserData: ObservableObject {
     
     private let defaults = UserDefaults.standard
     
+    //  MARK:- 
     //  TODO: идентифицировать пол числом — это плохо
     @Published var gender = (UserDefaults.standard.integer(forKey: "gender")) {
         didSet {
-//            willChange.send(self)
             defaults.set(gender, forKey: "gender")
         }
     }
