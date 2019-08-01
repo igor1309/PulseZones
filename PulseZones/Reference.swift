@@ -33,7 +33,7 @@ struct Reference : View {
                     HStack {
                         Text("Возраст: \(Int(userData.age))")
                         
-                        Slider(value: $userData.age, from: 15.0, through: 100.0, by: 5.0)
+                        Slider(value: $userData.age, from: 15.0, through: 100.0, by: 1.0)
                     }
                     
                     Text("МЧСС = \(userData.maxPulse)*")

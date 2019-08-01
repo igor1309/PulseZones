@@ -7,9 +7,9 @@
 //
 
 import Combine
-import SwiftUI
+import Foundation
 
-final class UserData: BindableObject {
+final class UserData: ObservableObject {
     let willChange = PassthroughSubject<UserData, Never>()
     
     //  Обобщенная формула подсчета МЧСС: 220 минус ваш возраст. Более современная формула: 214-(0.8 x возраст) для мужчин и 209-(0.9 x возраст) для женщин. Но более информативным будет получить значение в лабораторных условиях.
@@ -22,25 +22,21 @@ final class UserData: BindableObject {
     private let defaults = UserDefaults.standard
     
     //  TODO: идентифицировать пол числом — это плохо
-    var gender = (UserDefaults.standard.integer(forKey: "gender")) {
+    @Published var gender = (UserDefaults.standard.integer(forKey: "gender")) {
         didSet {
-            willChange.send(self)
+//            willChange.send(self)
             defaults.set(gender, forKey: "gender")
         }
     }
 
-    //  TODO: сохраняемый и загружаемый параметр
-    var age = (UserDefaults.standard.double(forKey: "age")) == 0 ? 40 : (UserDefaults.standard.double(forKey: "age")) {
+    @Published var age = (UserDefaults.standard.double(forKey: "age")) == 0 ? 40 : (UserDefaults.standard.double(forKey: "age")) {
         didSet {
-            willChange.send(self)
             defaults.set(age, forKey: "age")
         }
-        //let newDocNumber = UserDefaults.standard.integer(forKey: "age")
     }
     
-    var showInReverseOrder: Bool = UserDefaults.standard.bool(forKey: "showInReverseOrder") {
+    @Published var showInReverseOrder: Bool = UserDefaults.standard.bool(forKey: "showInReverseOrder") {
         didSet {
-            willChange.send(self)
             defaults.set(showInReverseOrder, forKey: "showInReverseOrder")
         }
     }

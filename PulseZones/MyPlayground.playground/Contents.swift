@@ -9,9 +9,25 @@ let zoneTerms: KeyValuePairs = [
 
 ]
 
-print(zoneTerms[0])
+// print(zoneTerms[0])
 
-for term in zoneTerms {
-    print("\((term.key)): \(term.value)")
+//for term in zoneTerms {
+//    print("\((term.key)): \(term.value)")
+//}
+
+
+enum Currency: String, CaseIterable, Codable, Hashable {
+    case rub = "₽"
+    case euro = "€"
+    case usd = "$"
+    case none = ""
+    
+    var id: String {
+        return rawValue
+    }
 }
 
+for c in Currency.allCases.filter({ $0 != .none }) {
+    print(c.id)
+//    print(c)
+}
