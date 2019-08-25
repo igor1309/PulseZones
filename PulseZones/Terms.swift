@@ -16,15 +16,15 @@ struct Terms : View {
         VStack(alignment: .leading) {
             Text(term)
 //                .bold()
-                .fontWeight(.heavy)
-                .foregroundColor(.secondary)
+                .fontWeight(.light)
+//                .foregroundColor(.secondary)
                 .font(.subheadline)
 //                .italic()
             
             Text(definition)
                 .foregroundColor(.secondary)
                 .font(.footnote)
-                .italic()
+//                .italic()
                 .lineLimit(nil)
         }
             .padding(.top, 0)

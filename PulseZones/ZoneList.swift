@@ -17,7 +17,7 @@ struct ZoneList : View {
         let values = userData.terms.map { $0.value }
         
         return List {
-            ForEach(keys.indices) {index in
+            ForEach(keys.indices) { index in
                 Terms(term: keys[index], definition: values[index])
             }
         }

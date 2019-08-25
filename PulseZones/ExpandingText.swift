@@ -23,9 +23,9 @@ struct ExpandingText : View {
                 Text(text)
                     .foregroundColor(.secondary)
                     .font(.footnote)
-                    .italic()
+//                    .italic()
                     .lineLimit(showFullDescription ? nil : 3)
-                    .animation(.easeInOut)
+//                    .animation(.default)
                 
                 if showExpandCollapseButtons {
                     Text(showFullDescription ? "свернуть⌃" : "полностью")

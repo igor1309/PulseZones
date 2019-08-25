@@ -60,6 +60,7 @@ struct Reference : View {
                         Image(systemName: "text.justify")
                             .foregroundColor(.secondary)
                         Text("Примечания".uppercased())
+                            .font(.headline)
                         //                            .padding(.vertical, 8)
                     })
                 {
