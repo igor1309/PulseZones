@@ -8,26 +8,32 @@
 
 import SwiftUI
 
+struct ExplanationText: View {
+    var name: String
+    
+    var body: some View {
+        Text(name)
+            .foregroundColor(.secondary)
+            .font(.footnote)
+    }
+}
+
 struct Terms : View {
     var term: String
     var definition: String
     
     var body: some View {
-        VStack(alignment: .leading) {
+        Section(header:
             Text(term)
-//                .bold()
                 .fontWeight(.light)
-//                .foregroundColor(.secondary)
                 .font(.subheadline)
-//                .italic()
-            
-            Text(definition)
-                .foregroundColor(.secondary)
-                .font(.footnote)
-//                .italic()
+        ){
+//            Text(definition)
+//                .foregroundColor(.secondary)
+//                .font(.footnote)
+            ExplanationText(name: definition)
                 .lineLimit(nil)
         }
-            .padding(.top, 0)
     }
 }
 
@@ -36,10 +42,19 @@ struct Terms : View {
 struct Terms_Previews : PreviewProvider {
     static var previews: some View {
         let userData = UserData()
-        return Terms(term: userData.terms[0].key,
-                     definition: userData.terms[0].value)
-            .environmentObject(UserData())
-            .previewLayout(.sizeThatFits)
+        
+        return Form {
+            Terms(term: userData.terms[0].key,
+                  definition: userData.terms[0].value)
+            
+            Terms(term: userData.terms[1].key,
+                  definition: userData.terms[1].value)
+            
+            Terms(term: userData.terms[2].key,
+                  definition: userData.terms[2].value)
+        }
+        .environmentObject(UserData())
+        .previewLayout(.sizeThatFits)
     }
 }
 #endif

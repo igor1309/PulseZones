@@ -55,19 +55,24 @@ struct Reference : View {
                     }
                 }
                 
-                Section(header:
-                    HStack {
-                        Image(systemName: "text.justify")
-                            .foregroundColor(.secondary)
-                        Text("Примечания".uppercased())
-                            .font(.headline)
-                        //                            .padding(.vertical, 8)
-                    })
-                {
-                    //                ZoneList()
+                HStack {
+                    Image(systemName: "text.justify")
+                        .foregroundColor(.secondary)
+                    Text("Примечания".uppercased())
+                        .font(.headline)
+                }
+//                Section(header:
+//                    HStack {
+//                        Image(systemName: "text.justify")
+//                            .foregroundColor(.secondary)
+//                        Text("Примечания".uppercased())
+//                            .font(.headline)
+//                    })
+//                {
+                    // ZoneList()
                     ForEach(keys.indices) {index in
                         Terms(term: keys[index], definition: values[index])
-                    }
+//                    }
                 }
             }
                 
